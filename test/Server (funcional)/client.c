@@ -26,17 +26,17 @@ int main(){
 
     if(connect(sockets, (struct sockaddr *) &server, addrlen)<0)
     {
-        printf("ERROR: couldn't connect to the client server , ending connection\n");  
+        print("ERROR: couldn't connect to the client server , ending connection\n");  
         return -1; 
     }
-    else printf("Connected");
+    else print("Connected");
 
     // INPUT DATA
 
     length = send(sockets, INPUTDATA, strlen(INPUTDATA)+1, 0);
     if(length < 0)
     {
-        printf("ERROR: couldn't send data, ending connection\n");          
-    } else printf("Sent %d Bytes of Data",length);
+        print("ERROR: couldn't send data, ending connection\n");          
+    } else print("Sent %d Bytes of Data",length);
 
 }

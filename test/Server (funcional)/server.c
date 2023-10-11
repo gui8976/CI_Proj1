@@ -25,13 +25,13 @@ int main(){
 
     if(bind(sockets, (struct sockaddr *) &local, addrlen) < 0)
     {
-        printf("ERROR: Binding failed , ending connection\n");
+        print("ERROR: Binding failed , ending connection\n");
         return -1;
     }
 
     if(listen(sockets,3) < 0)
     {
-        printf("ERROR: couldn't initialize , ending connection\n");
+        print("ERROR: couldn't initialize , ending connection\n");
         return -1;
     }
     
@@ -40,7 +40,7 @@ int main(){
 
     if(rcv_socket <0)
     {
-        printf("ERROR: couldn't accept the client socket , ending connection\n");
+        print("ERROR: couldn't accept the client socket , ending connection\n");
         return -1;
     }
 
@@ -48,10 +48,10 @@ int main(){
 
     if(length <0)
     {
-        printf("ERROR: couldn't receive the client socket , ending connection\n");
+        print("ERROR: couldn't receive the client socket , ending connection\n");
         return -1;
     }
-    else printf("Data received: %d Bytes\n",length);
+    else print("Data received: %d Bytes\n",length);
 
 
     //waits fo the client request for comunication 
