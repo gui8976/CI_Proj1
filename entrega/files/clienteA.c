@@ -30,7 +30,7 @@ int main()
     // writes the data to the register pretended
     result1 = write_multiple_registers(socket, Starting_address_write, Number_of_address_to_write, data1);
     if(result1 != 0){
-        printf("ERROR: couldn't write the registers\n");
+        printf("RESULT : %d\n",result1);
         return result1;
     }
 
@@ -45,7 +45,7 @@ int main()
 
     result2 = read_holding_registers(socket, Starting_address_read_1, Number_of_address_to_read_1, data_rcv);
     if(result2 != 0){
-        printf("ERROR: couldn't write the registers\n");
+        printf("RESULT : %d\n",result2);
         return result2;
     }
 
@@ -59,7 +59,7 @@ int main()
 
     result2 = read_holding_registers(socket, Starting_address_read_2, Number_of_address_to_read_2, &B);   
     if(result2 != 0){
-        printf("ERROR: couldn't write the registers\n");
+        printf("RESULT : %d\n",result2);
         return result2;
     }
 
@@ -82,7 +82,7 @@ int main()
 
     result3 = write_multiple_registers(socket, Starting_address_write_1, Number_of_address_to_write_1, data2);
     if(result3 != 0){
-        printf("ERROR: couldn't write the registers\n");
+        printf("RESULT : %d\n",result3);
         return result3;
     }
     disconnect_from_modbus_tcp(socket);
@@ -100,7 +100,7 @@ int main()
 
    result4 = write_multiple_registers(socket, Starting_address_write_2, Number_of_address_to_write_2, data2); 
     if(result4 != 0){
-        printf("ERROR: couldn't write the registers\n");
+        printf("RESULT : %d\n",result4);
         return result4;
     }
     // disconnects from the remote host
