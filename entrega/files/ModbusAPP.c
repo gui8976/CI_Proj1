@@ -183,7 +183,7 @@ int read_holding_registers(int socketfd, u_int16_t starting_address, u_int16_t q
     // transfers the data from the response to the data array
     for (int i = 0; i < quantity; i++)
     {
-        data_read[i] = (request[2 * i + 1] << 8) | request[2 * i + 2];
+        data_read[i] = (request[2 * i + 2] << 8) | request[2 * i + 3];
     }
 
     return 0;
