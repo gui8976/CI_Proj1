@@ -37,13 +37,13 @@ int main()
 
     // Aliena B)
 
-    uint16_t Starting_address_read = 123-1;
-    uint16_t Number_of_address_to_read = 4;
-    uint16_t data_rcv[Number_of_address_to_read];
+    uint16_t Starting_address_read_1 = 123-1;
+    uint16_t Number_of_address_to_read_1 = 4;
+    uint16_t data_rcv[Number_of_address_to_read_1];
     int result2 = 0;
 
     // reads the data from the registers pretended
-    if (result2 = read_holding_registers(socket, Starting_address_read, Number_of_address_to_read, data_rcv) < 0)
+    if (result2 = read_holding_registers(socket, Starting_address_read_1, Number_of_address_to_read_1, data_rcv) < 0)
     {
         printf("ERROR: couldn't read the registers\n");
         return -1;
@@ -53,13 +53,13 @@ int main()
         return result2;
 
     // Aliena C)
-    uint16_t Starting_address_read = 127-1;
-    uint16_t Number_of_address_to_read = 1;
+    uint16_t Starting_address_read_2 = 127-1;
+    uint16_t Number_of_address_to_read_2 = 1;
     uint16_t B = 0;
     uint16_t C = 0;
 
     //reads the data from the register pretended
-    if (result2 = read_holding_registers(socket, Starting_address_read, Number_of_address_to_read, &B) < 0)
+    if (result2 = read_holding_registers(socket, Starting_address_read_2, Number_of_address_to_read_2, &B) < 0)
     {
         printf("ERROR: couldn't read the registers\n");
         return -1;
@@ -80,12 +80,12 @@ int main()
 
     // Aliena D)
     // writes the C value in the register pretended
-    uint16_t Starting_address_write = 128 - 1; // -1 cause physical adress starts at 1
-    uint16_t Number_of_address_to_write = 1;
+    uint16_t Starting_address_write_1 = 128 - 1; // -1 cause physical adress starts at 1
+    uint16_t Number_of_address_to_write_1 = 1;
     int result3 = 0;
     uint16_t data2[] = {C}; // data to write
 
-    if (result3 = write_multiple_registers(socket, Starting_address_write, Number_of_address_to_write, data2) < 0)
+    if (result3 = write_multiple_registers(socket, Starting_address_write_1, Number_of_address_to_write_1, data2) < 0)
     {
         printf("ERROR: couldn't write the registers\n");
         return -1;
@@ -98,20 +98,20 @@ int main()
 
     // Aliena E)
     // connects to the  remote host
-    int socket = connect_to_modbus_tcp(PORT, REMOTEADDR);
-    int result = 4;
+    int socket1 = connect_to_modbus_tcp(PORT, REMOTEADDR);
+    int result4 = 0;
 
-    uint16_t Starting_address_write = 129 - 1; // -1 cause physical adress starts at 1
-    uint16_t Number_of_address_to_write = 1;
+    uint16_t Starting_address_write_2 = 129 - 1; // -1 cause physical adress starts at 1
+    uint16_t Number_of_address_to_write_2 = 1;
     // Writes the data to the register pretended
-    if (result1 = write_multiple_registers(socket, Starting_address_write, Number_of_address_to_write, data2) < 0)
+    if (result4 = write_multiple_registers(socket, Starting_address_write_2, Number_of_address_to_write_2, data2) < 0)
     {
         printf("ERROR: couldn't write the registers\n");
         return -1;
     }
 
     else
-        return result1;
+        return result4;
 
     // disconnects from the remote host
     disconnect_from_modbus_tcp(socket);
