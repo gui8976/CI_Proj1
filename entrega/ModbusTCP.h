@@ -9,11 +9,10 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #define MAX_MBAP_HEADER_SIZE 7
-#define UNIT_ID 0x01;
+#define UNIT_ID 51;
 
 // necessita de um IP e de um socket
 int connect_to_modbus_tcp(int port,char* ip_port);
-
 // >0 good    <bad
 int disconnect_from_modbus_tcp(int socketfd);
 

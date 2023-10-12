@@ -11,8 +11,8 @@
 #include "ModbusAPP.h"
 #include "ModbusTCP.h"
 
-#define SERVERADDR "127.0.0.1"
-#define REMOTEADDR " 10.227.113.1"
+#define SERVER_ADDR "127.0.0.1"
+#define REMOTE_ADDR "10.227.113.1"
 #define PORT 502
 
 int main()
@@ -23,7 +23,8 @@ int main()
     uint16_t Number_of_address_to_write = 1;
     uint16_t data1[] = {0x41}; // data to write
     int result1 = 0;
-    int socket = connect_to_modbus_tcp(PORT, SERVERADDR);
+    char ip[] = SERVER_ADDR;
+    int socket = connect_to_modbus_tcp(PORT, ip);
 
     // writes the data to the register pretended
     if (result1 = write_multiple_registers(socket, Starting_address_write, Number_of_address_to_write, data1) < 0)
@@ -32,12 +33,9 @@ int main()
         return -1;
     }
 
-    else
-        return result1;
-
     // Aliena B)
 
-    uint16_t Starting_address_read_1 = 123-1;
+    uint16_t Starting_address_read_1 = 123 - 1;
     uint16_t Number_of_address_to_read_1 = 4;
     uint16_t data_rcv[Number_of_address_to_read_1];
     int result2 = 0;
@@ -49,26 +47,20 @@ int main()
         return -1;
     }
 
-    else
-        return result2;
-
     // Aliena C)
-    uint16_t Starting_address_read_2 = 127-1;
+    uint16_t Starting_address_read_2 = 127 - 1;
     uint16_t Number_of_address_to_read_2 = 1;
     uint16_t B = 0;
     uint16_t C = 0;
 
-    //reads the data from the register pretended
+    // reads the data from the register pretended
     if (result2 = read_holding_registers(socket, Starting_address_read_2, Number_of_address_to_read_2, &B) < 0)
     {
         printf("ERROR: couldn't read the registers\n");
         return -1;
     }
 
-    else
-        return result2;
-
-    if(B == 0)
+    if (B == 0)
     {
         C = 9999;
     }
@@ -91,14 +83,12 @@ int main()
         return -1;
     }
 
-    else
-        return result3;
-    
     disconnect_from_modbus_tcp(socket);
 
     // Aliena E)
     // connects to the  remote host
-    int socket1 = connect_to_modbus_tcp(PORT, REMOTEADDR);
+    char remote[] = REMOTE_ADDR;
+    int socket1 = connect_to_modbus_tcp(PORT, remote);
     int result4 = 0;
 
     uint16_t Starting_address_write_2 = 129 - 1; // -1 cause physical adress starts at 1
@@ -110,9 +100,6 @@ int main()
         return -1;
     }
 
-    else
-        return result4;
-
     // disconnects from the remote host
-    disconnect_from_modbus_tcp(socket);
+    disconnect_from_modbus_tcp(socket1);
 }
