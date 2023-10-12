@@ -1,0 +1,45 @@
+Teste1 - Comunicaçãoes industriais
+
+
+1) V
+
+2) V
+
+3) F - The Mbap header is composed of 4 diferent parts , (Transaction id, Protocol identifier, length, UNIT_ID) so the port dos not belong here
+ 
+4) F - The accept() function cant be used to connect to the server , to do that we must use the connect() function.
+
+5) F - Write function is not well defined , if we pretend to write the vector val[10] we must write the funtion like this -> write(s ,val ,sizeof(val))
+
+6) V
+
+7) V
+
+8) F - 
+
+9) F - Read -> 125
+       Write-> 123
+
+10) F - The MBAP has a fixed size of 7 but the APDU has a variable size so this statment is only half true
+
+11) F - The parameter of transaction identifier must have an incrementing value 
+
+12) V
+
+13) V - correct afirmation because the maximum number of registers to read isss 125 and in the statment its used 400
+
+14) F - is not essencial but helps with organization and coherence between programs 
+ 
+15) V
+
+16) F
+
+17) V
+
+18) V
+
+19) F - MBAPDU in teh example should have a specified structure in relation to number of registers read -> 
+        MBAP -> 00:03:00:00:00:05::01
+        PDU-> 03:XX:XX:01
+
+20) F - U wont receive a valid response u can get a exception , and the program is forced to terminate 
