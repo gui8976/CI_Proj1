@@ -32,6 +32,10 @@ int main()
         printf("ERROR: couldn't write the registers\n");
         return -1;
     }
+    if(result1 != 0){
+        printf("ERROR: couldn't write the registers\n");
+        return result1;
+    }
 
     // Aliena B)
 
@@ -46,6 +50,10 @@ int main()
         printf("ERROR: couldn't read the registers\n");
         return -1;
     }
+    if(result2 != 0){
+        printf("ERROR: couldn't write the registers\n");
+        return result2;
+    }
 
     // Aliena C)
     uint16_t Starting_address_read_2 = 127 - 1;
@@ -58,6 +66,10 @@ int main()
     {
         printf("ERROR: couldn't read the registers\n");
         return -1;
+    }
+    if(result2 != 0){
+        printf("ERROR: couldn't write the registers\n");
+        return result2;
     }
 
     if (B == 0)
@@ -82,7 +94,10 @@ int main()
         printf("ERROR: couldn't write the registers\n");
         return -1;
     }
-
+    if(result3 != 0){
+        printf("ERROR: couldn't write the registers\n");
+        return result3;
+    }
     disconnect_from_modbus_tcp(socket);
 
     // Aliena E)
@@ -99,7 +114,12 @@ int main()
         printf("ERROR: couldn't write the registers\n");
         return -1;
     }
+    if(result4 != 0){
+        printf("ERROR: couldn't write the registers\n");
+        return result4;
+    }
 
     // disconnects from the remote host
     disconnect_from_modbus_tcp(socket1);
+    return 0;  
 }

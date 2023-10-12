@@ -26,7 +26,7 @@ int main(void)
     int check_error;
     uint16_t data1[] = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49};
 
-    int sockets = connect_to_modbus_tcp(PORT, SERVER_ADDR);
+    int sockets = connect_to_modbus_tcp(PORT, SERVERADDR);
 
     if ((check_error = read_holding_registers(sockets, Starting_address_read, Number_of_address_to_read ,data_rcv)) < 0)
     {

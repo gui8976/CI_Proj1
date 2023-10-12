@@ -3,23 +3,30 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdio.h>
-#include "modbusAPP.h"
-#include "modbusTCP.h"
+#include "ModbusAPP.h"
+#include "ModbusTCP.h"
 
-
-#define DEBUG
+// #define DEBUG
 
 #ifdef DEBUG
 
 #define PRINT(...) printf(__VA_ARGS__)
 
-#else 
+#else
 
 #define PRINT(...)
 
 #endif
 
+int connect_to_server(int port, char *ip_port)
+{
+    return connect_to_modbus_tcp(port, ip_port);
+}
 
+void disconnect_from_server(int socketfd)
+{
+    disconnect_from_modbus_tcp(socketfd);
+}
 
 // write a function that sets up the Modbus packet
 // returns 0 if it was successful
@@ -96,7 +103,7 @@ int write_multiple_registers(int socketfd, u_int16_t starting_address, u_int16_t
     if (request[0] & 0x80)
     {
         PRINT("ERROR: invalid response\n");
-        return -1;
+        return request[1];
     }
     return 0;
 }
@@ -141,7 +148,6 @@ int read_holding_registers(int socketfd, u_int16_t starting_address, u_int16_t q
     uint8_t request[apdu_length];
     uint8_t response[apdu_length];
 
-
     // build the header
     request[0] = (uint8_t)FUNCTION_RMD;              // function code
     request[1] = (uint8_t)(starting_address >> 8);   // high byte of starting address
@@ -183,7 +189,5 @@ int read_holding_registers(int socketfd, u_int16_t starting_address, u_int16_t q
     return 0;
 }
 
-
 #undef PRINT
 #undef DEBUG
-

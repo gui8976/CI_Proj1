@@ -3,8 +3,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdio.h>
-#include "modbusAPP.h"
-#include "modbusTCP.h"
+#include "ModbusAPP.h"
+#include "ModbusTCP.h"
 
 
 #define DEBUG

@@ -3,9 +3,10 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <stdio.h>
-#include "modbusAPP.h"
+#include "ModbusAPP.h"
+#include "ModbusTCP.h"
 #include <sys/time.h>
-#include "modbusTCP.h"
+
 
 
 #define DEBUG

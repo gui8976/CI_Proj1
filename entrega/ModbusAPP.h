@@ -18,6 +18,10 @@
 #define FUNCTION_WMR 16
 #define FUNCTION_RMD 3
 
+int connect_to_server(int port, char *ip_port);
+
+void disconnect_from_server(int socketfd);
+
 int write_multiple_registers(int socketfd ,u_int16_t Starting_address, u_int16_t quantity, u_int16_t * data);
 
 int read_holding_registers(int socketfd ,u_int16_t Starting_address, u_int16_t quantity, u_int16_t * data_read);
