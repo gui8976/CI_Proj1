@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "ModbusAPP.h"
+#include "ModbusAP.h"
 
 #define SERVER_ADDR "127.0.0.1"
 #define REMOTE_ADDR "10.227.113.1"
