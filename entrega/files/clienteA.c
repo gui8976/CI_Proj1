@@ -9,7 +9,6 @@
 #include <unistd.h>
 
 #include "ModbusAPP.h"
-#include "ModbusTCP.h"
 
 #define SERVER_ADDR "127.0.0.1"
 #define REMOTE_ADDR "10.227.113.1"
@@ -25,7 +24,7 @@ int main()
     uint16_t data1[] = {0x41}; // data to write
     int result1 = 0;
     char ip[] = SERVER_ADDR;
-    int socket = connect_to_modbus_tcp(PORT, ip);
+    int socket = connect_to_server(PORT, ip);
 
     // writes the data to the register pretended
     result1 = write_multiple_registers(socket, Starting_address_write, Number_of_address_to_write, data1);
@@ -85,7 +84,7 @@ int main()
         printf("RESULT : %d\n",result3);
         return result3;
     }
-    disconnect_from_modbus_tcp(socket);
+    disconnect_from_server(socket);
 
     // Aliena E)
     // connects to the  remote host
@@ -104,6 +103,6 @@ int main()
         return result4;
     }
     // disconnects from the remote host
-    disconnect_from_modbus_tcp(socket1);
+    disconnect_from_server(socket1);
     return 0;  
 }
